@@ -115,6 +115,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="headercollection.cpp" />
+    <ClCompile Include="httprequest.cpp" />
+    <ClCompile Include="httpresponse.cpp" />
+    <ClCompile Include="keyvaluepair.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="simpleclient.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="headercollection.h" />
+    <ClInclude Include="httprequest.h" />
+    <ClInclude Include="httpresponse.h" />
+    <ClInclude Include="keyvaluepair.h" />
+    <ClInclude Include="simpleclient.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
