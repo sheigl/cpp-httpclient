@@ -21,13 +21,13 @@ int HeaderCollection::length() {
 HeaderCollection::HeaderCollection() {
   printf("Creating HeaderCollection()\r\n");
 
-  int size = sizeof(KeyValuePair) * 20;
+  int size = sizeof(KeyValuePair *) * 20;
 
   printf("Allocating ");
   printf("%d", &size);
   printf(" bytes...\r\n");
 
-  this->headers = (KeyValuePair *)malloc(size);
+  this->headers = (KeyValuePair **)malloc(size);
   memset(this->headers, 0, size);
 };
 
@@ -40,7 +40,7 @@ HeaderCollection::~HeaderCollection() {
   } 
 }
 
-KeyValuePair &HeaderCollection::getHeader(int index) {
+KeyValuePair *HeaderCollection::getHeader(int index) {
   printf("Entering getHeader()\r\n");
   return headers[index];
 };

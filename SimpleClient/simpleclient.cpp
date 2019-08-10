@@ -29,7 +29,7 @@ SimpleClient::SimpleClient(char *host, int port) {
 };
 
 SimpleClient::~SimpleClient() {
-    printf("Deconstructing SimpleClient(%s, %n)", this->host, &this->port);
+    printf("Deconstructing SimpleClient(%s, %d)", this->host, &this->port);
     
     if (this->host)
     {
@@ -50,27 +50,29 @@ HttpResponse *SimpleClient::request(HttpRequest *request) {
     printf("Sendng headers...\r\n");
     int len = defaultHeaders->length();
     
-    KeyValuePair kvp = defaultHeaders->getHeader(0);
-    printf("%s", kvp.getKey());
-    printf(":");
-    printf("%s\r\n", kvp.getValue());
-
-    if (request->token != NULL)
+    for (size_t i = 0; i < len; i++)
     {
-        //client.print("X-TOKEN: ");
-        //client.println(request->token);
-    }
+        KeyValuePair *kvp = defaultHeaders->getHeader(i);
+        printf("%s", kvp->getKey());
+        printf(":");
+        printf("%s\r\n", kvp->getValue());
+
+        if (request->token != NULL)
+        {
+            //client.print("X-TOKEN: ");
+            //client.println(request->token);
+        }
     
-    printf("Sendng content...\r\n");
-    //client.print("Content-Length: ");
-    //client.println(strlen(request->body));
-    //client.println();
-    //client.println(request->body); 
+        printf("Sendng content...\r\n");
+        //client.print("Content-Length: ");
+        //client.println(strlen(request->body));
+        //client.println();
+        //client.println(request->body); 
+    }
 
     printf("Reading response...\r\n");
 
     HttpResponse *res = (HttpResponse *)malloc(sizeof(HeaderCollection) * 1);
-    res = new HttpResponse();
 
     /*
     while(client.connected() || client.available()) 

@@ -41,7 +41,7 @@ KeyValuePair::~KeyValuePair() {
 };
 
 char *KeyValuePair::getKey() {
-  printf("Entering getKey()\r\n");
+  //printf("Entering getKey()\r\n");
 
   if (this->key == NULL)
   {
@@ -53,7 +53,7 @@ char *KeyValuePair::getKey() {
   return this->key;
 }
 char *KeyValuePair::getValue() {
-  printf("Entering getValue()\r\n");
+  //printf("Entering getValue()\r\n");
 
   if (this->value == NULL)
   {
@@ -68,14 +68,14 @@ char *KeyValuePair::getValue() {
 void KeyValuePair::setKey(char *k) {
   printf("Entering setKey(%s)\r\n", k);
 
-    //realloc(this->key, sizeof(char) * strlen(k));
-    strcpy(this->key, k);
+  this->key = (char *)malloc(sizeof(char) * strlen(k));
+  strcpy(this->key, k);
 }
 
 void KeyValuePair::setValue(char *v) {
   printf("Entering setValue(%s)\r\n", v);
   
-  //realloc(this->value, sizeof(char) * strlen(v));
+  this->value = (char *)malloc(sizeof(char) * strlen(v));
   strcpy(this->value, v);
 }
 
